@@ -4,6 +4,7 @@ import _, { toNumber } from "lodash";
 import Loader from "./Loader";
 import PropTypes from 'prop-types';
 
+
 export class News extends Component {
   static defaultProps = {
     country: 'in',
@@ -73,6 +74,7 @@ export class News extends Component {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=3e42b43e0f0744fbbeb31045df82eb00&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
+
     this.setState({
       page: this.state.page ,  //page: this.state.page - 1
       loading : false,
@@ -101,6 +103,8 @@ export class News extends Component {
       let activePageNavigator = document.getElementById(`page-${(this.state.page)-1}`);
       activePageNavigator.classList.add("active");
       console.log(this.state.page - 1);
+      ///////////////////////////////////////
+      console.log("Properties are : " + this.props.pageSize + " " + this.props.country + " " + this.props.category);
   }
    
    handleNextClick = async () => {
@@ -127,6 +131,8 @@ export class News extends Component {
       activePageNavigator.classList.add("active");
       console.log(this.state.page + 1);
     }
+    /////////////////////////////////////////
+    console.log("Properties are : " + this.props.pageSize + " " + this.props.country + " " + this.props.category);
   }
      visitClickedPage = async (event)=>{
      let pageNo = toNumber(event.target.value) ;
@@ -150,6 +156,8 @@ export class News extends Component {
       }
       let activePageNavigator = document.getElementById(`page-${pageNo}`);
       activePageNavigator.classList.add("active");
+      //////////////////////////////////////
+      console.log("Properties are : " + this.props.pageSize + " " + this.props.country + " " + this.props.category);
   }
   
 
